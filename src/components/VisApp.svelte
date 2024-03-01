@@ -34,7 +34,12 @@
 </script>
 
 <style>
-  
+    #map {
+    width: 100%;
+    height: 350px; /* Adjust the height as needed */
+    pointer-events: none; /* Allow clicks to pass through the map */
+    overflow: hidden; /* Hide scrollbars */
+  }
 </style>
 
 <div id="map"></div>
