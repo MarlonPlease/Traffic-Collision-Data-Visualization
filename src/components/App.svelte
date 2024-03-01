@@ -31,6 +31,7 @@
         <section><MonthWithMostIncidents year="2017" /></section>
         <section><MonthWithMostIncidents year="2018" /></section>
         <section><MonthWithMostIncidents year="2019" /></section>
+        
     </div>
 </Scroller>
     <hr>
