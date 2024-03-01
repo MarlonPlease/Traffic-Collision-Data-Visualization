@@ -39,7 +39,7 @@ const locationCoordinates = filteredData.map(item => {
     const shuffledCoordinates = locationCoordinates.sort(() => Math.random() - 0.5);
 
     // Take the first 100 coordinates
-    randomCoordinates = shuffledCoordinates.slice(0, 100);
+    randomCoordinates = shuffledCoordinates.slice(0, 2000);
 
     // Output random coordinates to the console
     console.log(randomCoordinates);
@@ -74,7 +74,7 @@ const locationCoordinates = filteredData.map(item => {
   #map {
     width: 100%;
     height: 350px; /* Adjust the height as needed */
-    pointer-events: none; /* Allow clicks to pass through the map */
+    
     overflow: hidden; /* Hide scrollbars */
   }
 </style>

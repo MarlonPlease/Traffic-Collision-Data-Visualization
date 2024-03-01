@@ -18,7 +18,7 @@
 
 <Scroller top="{0.2}" bottom="{0.8}" bind:index bind:offset bind:progress>
     <div slot="background">
-    
+    <VisApp  />
         <p style="text-align: right; margin-right: 20px;">Section {index + 1} is currently active.</p>
     </div>
     <div slot="foreground">
@@ -35,8 +35,8 @@
         
     </div>
 </Scroller>
+
     <hr>
-<VisApp  />
 </main>
 
 
