@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <header>
+      <h1>Los Angeles: A Decade of Car Accidents</h1>
+      <h2>Data regarding Traffic Collision Incidents that occurred in Los Angeles County during the 2010-2019 decade.
+      </h2>
+    </header>
+
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://d3js.org/d3.v6.min.js"></script> %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+    <div id="chart"></div>
+  </body>
+</html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+  html {
+    background-color: #ffffff;
+  }
+
+  header {
+    background-color: red;
+    line-height: 1;
+    margin: 0;
+  }
+
+  h1 {
+    font-family: "Kode Mono", monospace;
+    font-weight: 600;
+    font-size: 42px;
+    color: white;
+    padding: 10px;
+  }
+
+  h2 {
+    font-family: "Kode Mono", monospace;
+    font-weight: 400;
+    font-size: 22px;
+    color: white;
+    padding: 10px;
+  }
+
+  body {
+
+      height: auto;
+    }
+</style>
