@@ -29,11 +29,10 @@
     });
 
     // Extracting location coordinates of filtered incidents
-const locationCoordinates = filteredData.map(item => {
-    const [longitude, latitude] = item['Location'].match(/\(([^)]+)\)/)[1].split(',').map(Number);
-    return [latitude, longitude]; // Reverse the order of coordinates
-});
-
+    const locationCoordinates = filteredData.map(item => {
+      const [longitude, latitude] = item['Location'].match(/\(([^)]+)\)/)[1].split(',').map(Number);
+      return [latitude, longitude]; // Reverse the order of coordinates
+    });
 
     // Shuffle locationCoordinates array
     const shuffledCoordinates = locationCoordinates.sort(() => Math.random() - 0.5);
@@ -43,13 +42,6 @@ const locationCoordinates = filteredData.map(item => {
 
     // Output random coordinates to the console
     console.log(randomCoordinates);
-
-
-
-
-
-
-
 
     // Initialize Mapbox GL map
     mapboxgl.accessToken = "pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw";
@@ -61,25 +53,70 @@ const locationCoordinates = filteredData.map(item => {
       scrollZoom: false // Disable scroll zoom
     });
 
-    // Add markers for each random location coordinate
-    randomCoordinates.forEach(coord => {
-      new mapboxgl.Marker({color: "#8B4513"})
-        .setLngLat(coord)
-        .addTo(map);
+    map.on('style.load', () => {
+      // Add markers for each random location coordinate
+      randomCoordinates.forEach(coord => {
+        new mapboxgl.Marker({ color: "#8B4513" })
+          .setLngLat(coord)
+          .addTo(map);
+      });
+
+      // Add heatmap layer
+      map.addLayer({
+        'id': 'randomCoordinates-heat',
+        'type': 'heatmap',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'FeatureCollection',
+            'features': randomCoordinates.map(coord => {
+              return {
+                'type': 'Feature',
+                'geometry': {
+                  'type': 'Point',
+                  'coordinates': coord
+                }
+              };
+            })
+          }
+        },
+        'maxzoom': 15,
+        'paint': {
+          // Heatmap color stops
+          'heatmap-color': [
+            'interpolate',
+            ['linear'],
+            ['heatmap-density'],
+            0,
+            'rgba(33,102,172,0)',
+            0.2,
+            'rgb(103,169,207)',
+            0.4,
+            'rgb(209,229,240)',
+            0.6,
+            'rgb(253,219,199)',
+            0.8,
+            'rgb(239,138,98)',
+            1,
+            'rgb(178,24,43)'
+          ],
+          // Heatmap radius
+          'heatmap-radius': 35,
+          // Heatmap intensity
+          'heatmap-intensity': 1,
+          'heatmap-opacity': 0.7 
+        }
+      });
     });
   });
-
-  
 </script>
 
 <style>
   #map {
     width: 100%;
-    height: 350px; /* Adjust the height as needed */
-    
+    height: 450px; /* Adjust the height as needed */
     overflow: hidden; /* Hide scrollbars */
   }
 </style>
 
 <div id="map"></div>
-
