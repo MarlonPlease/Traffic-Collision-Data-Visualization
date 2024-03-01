@@ -63,11 +63,13 @@ const locationCoordinates = filteredData.map(item => {
 
     // Add markers for each random location coordinate
     randomCoordinates.forEach(coord => {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({color: "#8B4513"})
         .setLngLat(coord)
         .addTo(map);
     });
   });
+
+  
 </script>
 
 <style>

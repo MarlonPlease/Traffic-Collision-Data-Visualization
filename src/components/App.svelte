@@ -129,5 +129,7 @@
     background: linear-gradient(to right, red, red); /* Gradient from top to bottom */
     margin: 20px 0; /* Adjust margin as needed */
 }
+
+
 </style>
 
