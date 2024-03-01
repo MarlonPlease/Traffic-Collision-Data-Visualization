@@ -54,11 +54,39 @@
     });
 
     map.on('style.load', () => {
-      // Add markers for each random location coordinate
+      // Remove existing circle layers (if any)
+      const existingLayers = map.getStyle().layers;
+      existingLayers.forEach(layer => {
+        if (layer.id.startsWith('circle-')) {
+          map.removeLayer(layer.id);
+        }
+      });
+
+      // Add circles for each random location coordinate
       randomCoordinates.forEach(coord => {
-        new mapboxgl.Marker({ color: "#8B4513" })
-          .setLngLat(coord)
-          .addTo(map);
+        // Check if the layer already exists before adding it
+        const layerId = 'circle-' + coord.join('-');
+        if (!map.getLayer(layerId)) {
+          map.addLayer({
+            'id': layerId, // Unique layer ID
+            'type': 'circle',
+            'source': {
+              'type': 'geojson',
+              'data': {
+                'type': 'Feature',
+                'geometry': {
+                  'type': 'Point',
+                  'coordinates': coord
+                }
+              }
+            },
+            'paint': {
+              'circle-color': '#8B4513', // Circle color
+              'circle-radius': 10, // Circle radius (adjust as needed)
+              'circle-opacity': 1 // Circle opacity
+            }
+          });
+        }
       });
 
       // Add heatmap layer
