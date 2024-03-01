@@ -3,7 +3,7 @@
     import VisApp from '../components/VisApp.svelte';
     import Basic_Information from '../components/Basic Information.svelte';
     import MonthWithMostIncidents from './MonthWithMostIncidents.svelte';
-    import mapboxgl from 'mapbox-gl/dist/mapbox-gl'; // Import Mapbox GL library
+
 
     let index, offset, progress;
     
