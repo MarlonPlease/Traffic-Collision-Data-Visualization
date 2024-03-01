@@ -4,6 +4,7 @@
   import * as d3 from 'd3'; // Import D3 library
 
   let cleanData = [];
+  let randomCoordinates = [];
 
   onMount(async () => {
     const res = await fetch('traffic_collision_data.csv'); 
@@ -21,6 +22,35 @@
 
     console.log("First 5 tuples:", cleanData.slice(0, 5));
 
+    // Assuming cleanData is your array of traffic collision incidents
+    const filteredData = cleanData.filter(item => {
+      const year = new Date(item['Date Occurred']).getFullYear();
+      return item['Victim Descent'] === 'H' && year === 2010;
+    });
+
+    // Extracting location coordinates of filtered incidents
+const locationCoordinates = filteredData.map(item => {
+    const [longitude, latitude] = item['Location'].match(/\(([^)]+)\)/)[1].split(',').map(Number);
+    return [latitude, longitude]; // Reverse the order of coordinates
+});
+
+
+    // Shuffle locationCoordinates array
+    const shuffledCoordinates = locationCoordinates.sort(() => Math.random() - 0.5);
+
+    // Take the first 100 coordinates
+    randomCoordinates = shuffledCoordinates.slice(0, 100);
+
+    // Output random coordinates to the console
+    console.log(randomCoordinates);
+
+
+
+
+
+
+
+
     // Initialize Mapbox GL map
     mapboxgl.accessToken = "pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw";
     const map = new mapboxgl.Map({
@@ -30,11 +60,18 @@
       zoom: 10, // Adjust the zoom level as needed
       scrollZoom: false // Disable scroll zoom
     });
+
+    // Add markers for each random location coordinate
+    randomCoordinates.forEach(coord => {
+      new mapboxgl.Marker()
+        .setLngLat(coord)
+        .addTo(map);
+    });
   });
 </script>
 
 <style>
-    #map {
+  #map {
     width: 100%;
     height: 350px; /* Adjust the height as needed */
     pointer-events: none; /* Allow clicks to pass through the map */
@@ -43,3 +80,4 @@
 </style>
 
 <div id="map"></div>
+
