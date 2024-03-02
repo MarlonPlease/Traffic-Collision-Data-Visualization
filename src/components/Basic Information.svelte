@@ -10,7 +10,7 @@
   let currentYear = 2010; // Initialize the current year
 
   let svg;
-  let margin = { top: 20, right: 20, bottom: 30, left: 40 };
+  let margin = { top: 55, right: 20, bottom: 30, left: 90 };
   let width = 960 - margin.left - margin.right;
   let height = 500 - margin.top - margin.bottom;
 
@@ -104,6 +104,25 @@ function renderBarGraph() {
     svg.append("g")
       .call(d3.axisLeft(y));
 
+      // Add y-axis label
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - (margin.left) )
+        .attr("x", 0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Amount of Traffic Collisions");
+
+    // Add text element to display the selected year above the chart
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -margin.top / 2)
+        .attr("text-anchor", "middle")
+        .style("font-size", "20px") // Larger font size
+        .style("padding-top", "10px") // Padding above the text
+        .style("padding-bottom", "15px") // Padding below the text
+        .text("Traffic Collisions: A Yearly Breakdown for the 2010's");
+
     // Bars
     svg.selectAll(".bar")
       .data(data)
@@ -192,7 +211,9 @@ svg.selectAll(".bar")
     Let's navigate LA's streets together, one data point at a time!
     </p>
     <p>There were a total of <span style="background-color:  #66FFCC ;">{datasetSize}</span> Traffic Collision Incidents between the years 2010 and 2019. 
-    The average reported age during this time period was <span style="background-color:  #66FFCC ;">{averageAge.toFixed(2)}</span> years old.</p>
+    The average reported age during this time period was <span style="background-color:  #66FFCC ;">{averageAge.toFixed(2)}</span> years old.
+
+    </p>
   {/if}
   <!-- Container for the bar graph -->
   <div id="barGraph"></div>
