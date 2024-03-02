@@ -16,6 +16,7 @@
   onMount(async () => {
     // Load the CSV data using D3
     const data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Updated/main/static/Ethnicity.csv');
+    console.log("First 5 tuples:", data.slice(0, 5));
 
     // Initialize Mapbox map
     mapboxgl.accessToken = "pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw"; // Replace with your Mapbox access token
