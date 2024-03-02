@@ -9,12 +9,13 @@
   let Other = true; // Initial visibility for Other/Unknown
   let Black = true; // Initial visibility for Black
   let White = true; // Initial visibility for White
+  let Native = true; // Initial visibility for Native
   let circleSize = 5; // Initial circle size
   let circleOpacity = .5; // Initial circle opacity
 
   onMount(async () => {
     // Load the CSV data using D3
-    const data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Updated/main/static/sobriety_data.csv');
+    const data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Updated/main/static/Ethnicity.csv');
 
     // Initialize Mapbox map
     mapboxgl.accessToken = "pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw"; // Replace with your Mapbox access token
@@ -36,7 +37,8 @@
         'Hispanic': 'red',
         'Other/Unknown': 'green',
         'Black': 'yellow',
-        'White': 'purple'
+        'White': 'purple',
+        'Native': 'black'
         // Add more ethnicities and colors as needed
       };
 
@@ -82,6 +84,7 @@
   $: {
     if (map && map.loaded()) {
       map.setLayoutProperty('circles-Asian', 'visibility', Asian ? 'visible' : 'none');
+      map.setLayoutProperty('circles-Native', 'visibility', Native ? 'visible' : 'none');
       map.setLayoutProperty('circles-Hispanic', 'visibility', Hispanic ? 'visible' : 'none');
       map.setLayoutProperty('circles-Other/Unknown', 'visibility', Other ? 'visible' : 'none');
       map.setLayoutProperty('circles-Black', 'visibility', Black ? 'visible' : 'none');
@@ -101,6 +104,7 @@
 
 <!-- Add checkboxes for each ethnicity -->
 <label><input type="checkbox" bind:checked={Asian}> Asian</label>
+<label><input type="checkbox" bind:checked={Native}> Native</label>
 <label><input type="checkbox" bind:checked={Hispanic}> Hispanic</label>
 <label><input type="checkbox" bind:checked={Other}> Other/Unknown</label>
 <label><input type="checkbox" bind:checked={Black}> Black</label>
