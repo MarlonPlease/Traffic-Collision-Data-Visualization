@@ -94,7 +94,7 @@
 </script>
 <main>
   
-    <h2>Demographics of Traffic Collision during the 2010's</h2>
+    <h2>Demographics of Traffic Collisions during the 2010's</h2>
   <!-- Container for the bar graph -->
   <div id="map"></div>
 </main>
