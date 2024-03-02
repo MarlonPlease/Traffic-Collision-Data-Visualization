@@ -92,18 +92,27 @@
     }
   }
 </script>
+
 <main>
-  
-    <h2>Demographics of Traffic Collisions during the 2010's</h2>
-  <!-- Container for the bar graph -->
+  <h2>Demographics of Traffic Collisions during the 2010's</h2>
+  <div id="checkbox-container" class="checkbox-grid">
+    <!-- Add checkboxes for each ethnicity -->
+    <label style="color: blue;"><input type="checkbox" bind:checked={Asian}> Asian</label>
+    <label style="color: purple;"><input type="checkbox" bind:checked={Native}> Native</label>
+    <label style="color: green;"><input type="checkbox" bind:checked={Hispanic}> Hispanic</label>
+    <label style="color: orange;"><input type="checkbox" bind:checked={Other}> Other/Unknown</label>
+    <label style="color: yellow;"><input type="checkbox" bind:checked={Black}> Black</label>
+    <label style="color: red;"><input type="checkbox" bind:checked={White}> White</label>
+  </div>
+  <!-- Container for the map -->
   <div id="map"></div>
 </main>
-
 
 <style>
   #map {
     height: 500px; /* Adjust height as needed */
     width: 100%; /* Make map fill container width */
+    margin-bottom: 20px; /* Add some space below the map */
   }
   h2 {
     text-align: left;
@@ -114,15 +123,12 @@
     color: black;
     padding: 10px;
   }
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust based on your preference */
+    grid-gap: 10px; /* Adjust the gap between checkboxes */
+    padding: 10px;
+    border: 3px solid #ccc; /* Add border around the grid */
+    border-radius: 5px; /* Add some border radius for a rounded appearance */
+  }
 </style>
-
-
-
-<!-- Add checkboxes for each ethnicity -->
-<!-- Add checkboxes for each ethnicity -->
-<label style="color: blue;"><input type="checkbox" bind:checked={Asian}> Asian</label>
-<label style="color: purple;"><input type="checkbox" bind:checked={Native}> Native</label>
-<label style="color: green;"><input type="checkbox" bind:checked={Hispanic}> Hispanic</label>
-<label style="color: orange;"><input type="checkbox" bind:checked={Other}> Other/Unknown</label>
-<label style="color: yellow;"><input type="checkbox" bind:checked={Black}> Black</label>
-<label style="color: red;"><input type="checkbox" bind:checked={White}> White</label>
