@@ -184,6 +184,13 @@ svg.selectAll(".bar")
     <h2>Loading CSV file...</h2>
   {:else}
     <h2>In the 2010's decade...</h2>
+    <p>
+    Buckle up and dive into the pulse of Los Angeles traffic with our interactive website! 
+    Offering a detailed glimpse into traffic incidents dating back to 2010 to 2019.
+    This website’s dataset is a treasure trove sourced from original paper reports. 
+    Unveil the city's collision trends for certain races, through dynamic graphs and interactive maps.
+    Let's navigate LA's streets together, one data point at a time!
+    </p>
     <p>There were a total of <span style="background-color:  #66FFCC ;">{datasetSize}</span> Traffic Collision Incidents between the years 2010 and 2019. 
     The average reported age during this time period was <span style="background-color:  #66FFCC ;">{averageAge.toFixed(2)}</span> years old.</p>
   {/if}

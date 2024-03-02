@@ -11,7 +11,7 @@
   let White = true; // Initial visibility for White
   let Native = true; // Initial visibility for Native
   let circleSize = 3; // Initial circle size
-  let circleOpacity = 0.8; // Initial circle opacity
+  let circleOpacity = 0.6; // Initial circle opacity
 
   onMount(async () => {
     // Load the CSV data using D3
