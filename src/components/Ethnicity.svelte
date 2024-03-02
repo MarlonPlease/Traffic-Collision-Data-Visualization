@@ -97,9 +97,13 @@
 <main>
   <h2>Demographics of Traffic Collisions during the 2010's</h2>
   <p>
-    Why are other cities not reported?
-    The datapoints form a shape that resemble the map of the jurisdiction of LAPD.
+    Why the funny shape? 
+    The coordinates form a shape that resemble the map of the jurisdiction of LAPD.
+    Why are other cities not reported? 
     The LAPD does not police all the cities of LA County.
+
+    Will the demographics of traffic collisions change for the 2020's decade? 
+    Who knows.
     </p>
   <div id="checkbox-container" class="checkbox-grid">
     <!-- Add checkboxes for each ethnicity -->
