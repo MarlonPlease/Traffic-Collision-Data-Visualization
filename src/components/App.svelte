@@ -1,6 +1,7 @@
 <script>
     import Scroller from '@sveltejs/svelte-scroller';
     import VisApp from '../components/VisApp.svelte';
+    import Sobriety from '../components/Sobriety.svelte';
     import Basic_Information from '../components/Basic Information.svelte';
     import MonthWithMostIncidents from './MonthWithMostIncidents.svelte';
 
@@ -14,6 +15,7 @@
 <main>
     <Basic_Information  />
 
+    <hr>
     <hr>
 
 <Scroller top="{0.2}" bottom="{0.8}" bind:index bind:offset bind:progress>
