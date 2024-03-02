@@ -24,7 +24,7 @@
       container: 'map', // HTML element ID where the map will be rendered
       style: 'mapbox://styles/mapbox/light-v11', // Map style
       center: [-118.2437, 34.0522], // Center coordinates for Los Angeles
-      zoom: 10 // Initial zoom level
+      zoom: 9 // Initial zoom level
     });
 
     // Add map controls (optional)
@@ -96,6 +96,11 @@
 
 <main>
   <h2>Demographics of Traffic Collisions during the 2010's</h2>
+  <p>
+    Why are other cities not reported?
+    The datapoints form a shape that resemble the map of the jurisdiction of LAPD.
+    The LAPD does not police all the cities of LA County.
+    </p>
   <div id="checkbox-container" class="checkbox-grid">
     <!-- Add checkboxes for each ethnicity -->
     <label ><input type="checkbox" bind:checked={Asian}> Asian</label>
@@ -111,7 +116,7 @@
 
 <style>
   #map {
-    height: 500px; /* Adjust height as needed */
+    height: 550px; /* Adjust height as needed */
     width: 100%; /* Make map fill container width */
     margin-bottom: 20px; /* Add some space below the map */
   }
