@@ -97,12 +97,12 @@
   <h2>Demographics of Traffic Collisions during the 2010's</h2>
   <div id="checkbox-container" class="checkbox-grid">
     <!-- Add checkboxes for each ethnicity -->
-    <label style="color: blue;"><input type="checkbox" bind:checked={Asian}> Asian</label>
-    <label style="color: purple;"><input type="checkbox" bind:checked={Native}> Native</label>
-    <label style="color: green;"><input type="checkbox" bind:checked={Hispanic}> Hispanic</label>
-    <label style="color: orange;"><input type="checkbox" bind:checked={Other}> Other/Unknown</label>
-    <label style="color: yellow;"><input type="checkbox" bind:checked={Black}> Black</label>
-    <label style="color: red;"><input type="checkbox" bind:checked={White}> White</label>
+    <label ><input type="checkbox" bind:checked={Asian}> Asian</label>
+    <label ><input type="checkbox" bind:checked={Native}> Native</label>
+    <label ><input type="checkbox" bind:checked={Hispanic}> Hispanic</label>
+    <label ><input type="checkbox" bind:checked={Other}> Other/Unknown</label>
+    <label ><input type="checkbox" bind:checked={Black}> Black</label>
+    <label ><input type="checkbox" bind:checked={White}> White</label>
   </div>
   <!-- Container for the map -->
   <div id="map"></div>

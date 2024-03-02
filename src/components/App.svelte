@@ -72,10 +72,10 @@
         display: grid;
         place-content: center;
         text-align: center;
-        font-family: "Josefin Sans", sans-serif;
-        font-weight: 300;
+        font-family: "Kode Mono", monospace;
+        font-weight: 400;
         line-height: 2;
-        font-size: 24px;
+        font-size: 20px;
         color: var(--color-text);
         background-color: var(--color-bg);
     }
