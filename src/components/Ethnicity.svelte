@@ -10,8 +10,8 @@
   let Black = true; // Initial visibility for Black
   let White = true; // Initial visibility for White
   let Native = true; // Initial visibility for Native
-  let circleSize = 5; // Initial circle size
-  let circleOpacity = .5; // Initial circle opacity
+  let circleSize = 3; // Initial circle size
+  let circleOpacity = 0.8; // Initial circle opacity
 
   onMount(async () => {
     // Load the CSV data using D3
@@ -21,7 +21,7 @@
     mapboxgl.accessToken = "pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw"; // Replace with your Mapbox access token
     map = new mapboxgl.Map({
       container: 'map', // HTML element ID where the map will be rendered
-      style: 'mapbox://styles/mapbox/streets-v11', // Map style
+      style: 'mapbox://styles/mapbox/light-v11', // Map style
       center: [-118.2437, 34.0522], // Center coordinates for Los Angeles
       zoom: 10 // Initial zoom level
     });
@@ -34,11 +34,11 @@
       // Define the colors for each ethnicity
       const colors = {
         'Asian': 'blue',
-        'Hispanic': 'red',
-        'Other/Unknown': 'green',
+        'Hispanic': 'green',
+        'Other/Unknown': 'orange',
         'Black': 'yellow',
-        'White': 'purple',
-        'Native': 'black'
+        'White': 'red',
+        'Native': 'purple'
         // Add more ethnicities and colors as needed
       };
 
@@ -92,15 +92,31 @@
     }
   }
 </script>
+<main>
+  
+    <h2>Demographics of Traffic Collision during the 2010's</h2>
+  <!-- Container for the bar graph -->
+  <div id="map"></div>
+</main>
+
 
 <style>
   #map {
     height: 500px; /* Adjust height as needed */
     width: 100%; /* Make map fill container width */
   }
+  h2 {
+    text-align: left;
+    font-family: "Kode Mono", monospace;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1;
+    color: black;
+    padding: 10px;
+  }
 </style>
 
-<div id="map"></div>
+
 
 <!-- Add checkboxes for each ethnicity -->
 <label><input type="checkbox" bind:checked={Asian}> Asian</label>
