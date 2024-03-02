@@ -9,6 +9,8 @@
   let Other = true; // Initial visibility for Other/Unknown
   let Black = true; // Initial visibility for Black
   let White = true; // Initial visibility for White
+  let circleSize = 5; // Initial circle size
+  let circleOpacity = .5; // Initial circle opacity
 
   onMount(async () => {
     // Load the CSV data using D3
@@ -64,8 +66,12 @@
           source: layerId,
           type: 'circle',
           paint: {
-            'circle-radius': 5,
-            'circle-color': colors[ethnicity]
+            'circle-radius': circleSize,
+            'circle-color': colors[ethnicity],
+            'circle-opacity': circleOpacity
+          },
+          layout: {
+            'visibility': 'visible' // Initially set visibility to visible
           }
         });
       });
@@ -86,7 +92,7 @@
 
 <style>
   #map {
-    height: 400px; /* Adjust height as needed */
+    height: 500px; /* Adjust height as needed */
     width: 100%; /* Make map fill container width */
   }
 </style>
@@ -99,3 +105,4 @@
 <label><input type="checkbox" bind:checked={Other}> Other/Unknown</label>
 <label><input type="checkbox" bind:checked={Black}> Black</label>
 <label><input type="checkbox" bind:checked={White}> White</label>
+
