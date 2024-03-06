@@ -1,37 +1,42 @@
 <script>
   import { onMount } from 'svelte';
-  import mapboxgl from 'mapbox-gl/dist/mapbox-gl'; // Import Mapbox GL library
-  import * as d3 from 'd3'; // Import D3 library
+  import * as d3 from 'd3';
+  
+  let mapData;
 
-  let cleanData = [];
-  let randomCoordinates = [];
-
-  onMount(async () => {
-    const res = await fetch('traffic_collision_data.csv'); 
-    const csv = await res.text();
-    cleanData = d3.csvParse(csv, d3.autoType);
-
-    function extractYear(dateString) {
-      return parseInt(dateString.split('/')[2]); // Assuming date format is MM/DD/YYYY
-    }
-    
-    cleanData = cleanData.filter(row => {
-      const year = extractYear(row['Date Occurred']);
-      return year >= 2010 && year <= 2019;
-    });
-
-    console.log("First 5 tuples:", cleanData.slice(0, 5));
-
-    // Assuming cleanData is your array of traffic collision incidents
-    const filteredData = cleanData.filter(item => {
-      const year = new Date(item['Date Occurred']).getFullYear();
-      return year === 2010;
+  onMount(() => {
+    // Load GeoJSON data for Los Angeles
+    d3.json('map_LA.geojson').then(data => {
+      mapData = data;
+      drawMap();
     });
   });
+
+  function drawMap() {
+    // Your D3 code to draw the map goes here
+    const svg = d3.select('svg');
+    const projection = d3.geoMercator()
+                       .center([-118.25, 34.05])
+                       .scale(50000) // Adjust the scale to zoom out
+                       .translate([400, 400]);
+
+    const path = d3.geoPath().projection(projection);
+
+    svg.selectAll('path')
+       .data(mapData.features)
+       .enter()
+       .append('path')
+       .attr('d', path)
+       .style('fill', 'steelblue')
+       .style('stroke', 'white')
+       .style('stroke-width', 0.5);
+  }
 </script>
 
 <style>
-
+  /* Add your CSS styles here */
 </style>
 
-
+<svg width="800" height="800">
+  <img src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/-118.25,34.05,9,0,0/800x800?access_token=pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw" alt="Map">
+</svg>
