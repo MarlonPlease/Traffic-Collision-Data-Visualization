@@ -5,6 +5,7 @@
     import Basic_Information from '../components/Basic Information.svelte';
     import MonthWithMostIncidents from './MonthWithMostIncidents.svelte';
 
+    let plotPoint = { longitude: -118.25, latitude: 34.05 };
 
     let index, offset, progress;
     
@@ -16,13 +17,11 @@
     <Basic_Information />
     <hr>
     <Ethnicity />
-    
     <hr>
     <VisApp />
     <hr>
 <Scroller top="{0.2}" bottom="{0.8}" bind:index bind:offset bind:progress>
     <div slot="background">
-
         <p style="text-align: right; margin-right: 20px;">Section {index + 1} is currently active.</p>
     </div>
     <div slot="foreground">
@@ -35,11 +34,9 @@
         <section><MonthWithMostIncidents year="2016" /></section>
         <section><MonthWithMostIncidents year="2017" /></section>
         <section><MonthWithMostIncidents year="2018" /></section>
-        <section><MonthWithMostIncidents year="2019" /></section>
-        
+        <section><MonthWithMostIncidents year="2019" /></section>     
     </div>
 </Scroller>
-
     <hr>
 </main>
 

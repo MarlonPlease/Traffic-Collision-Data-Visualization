@@ -14,6 +14,7 @@
   <h2><span style="color: white; background-color: black;">In the year {year}...</span></h2>
 
   <p>The month with the most incidents was: {getMonthWithMostIncidents(year)}</p>
+  
 </main>
 
 
