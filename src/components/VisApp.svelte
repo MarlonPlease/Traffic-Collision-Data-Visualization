@@ -3,16 +3,23 @@
   import * as d3 from 'd3';
 
   let mapData;
-  let currentIndex = 0;
   let svg;
-
-  const plotPoints = [{ longitude: -118.25, latitude: 34.05 }, { longitude: -118.2, latitude: 34.0 }];
+  let currentYear = 2010;
+  let filteredData = [];
+  let data
 
   onMount(async () => {
     svg = d3.select('svg');
     mapData = await d3.json('map_LA.geojson');
+     data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Updated/main/static/Ethnicity.csv');
+
+    filteredData = data.filter(d => {
+      const year = new Date(d['Date Occurred']).getFullYear();
+      return year === currentYear;
+    });
+
     drawMap();
-    drawPlotPoint();
+    drawPlotPoints();
   });
 
   function drawMap() {
@@ -35,7 +42,7 @@
        .style('stroke-width', 1.5);
   }
 
-  function drawPlotPoint() {
+  function drawPlotPoints() {
     const projection = d3.geoMercator()
                          .center([-118.25, 34.05])
                          .scale(41765)
@@ -44,19 +51,24 @@
     svg.selectAll('.plot-point').remove();
 
     svg.selectAll('.plot-point')
-       .data([plotPoints[currentIndex]])
+       .data(filteredData)
        .enter()
        .append('circle')
        .attr('class', 'plot-point')
-       .attr('cx', d => projection([d.longitude, d.latitude])[0])
-       .attr('cy', d => projection([d.longitude, d.latitude])[1])
+       .attr('cx', d => projection([parseFloat(d['Longitude']), parseFloat(d['Latitude'])])[0])
+       .attr('cy', d => projection([parseFloat(d['Longitude']), parseFloat(d['Latitude'])])[1])
        .attr('r', 5)
        .style('fill', 'red');
   }
 
-  function showNextPoint() {
-    currentIndex = (currentIndex + 1) % plotPoints.length;
-    drawPlotPoint();
+  function updateYear(event) {
+    currentYear = parseInt(event.target.value);
+    filteredData = data.filter(d => {
+      const year = new Date(d['Date Occurred']).getFullYear();
+      return year === currentYear;
+    });
+
+    drawPlotPoints();
   }
 </script>
 
@@ -69,6 +81,7 @@
     height: 800px;
     margin: 0 auto;
     position: relative;
+    
   }
 
   button {
@@ -80,10 +93,15 @@
     top: 40px;
     left: 0;
   }
+
+  .slider {
+    width: 100%;
+  }
 </style>
 
 <div>
-  <button on:click={showNextPoint}>Show Next Point</button>
+  <input class="slider" type="range" min="2010" max="2019" step="1" bind:value={currentYear} on:input={updateYear} />
+  <span>{currentYear}</span>
   <img src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/-118.25,34.05,9,0,0/800x800?access_token=pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw" alt="Map">
   <svg width="800" height="800"></svg>
 </div>
