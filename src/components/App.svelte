@@ -25,16 +25,8 @@
         <p style="text-align: right; margin-right: 20px;">Section {index + 1} is currently active.</p>
     </div>
     <div slot="foreground">
-        <section><MonthWithMostIncidents year="2010" /></section>
-        <section><MonthWithMostIncidents year="2011" /></section>
-        <section><MonthWithMostIncidents year="2012" /></section>
-        <section><MonthWithMostIncidents year="2013" /></section>
-        <section><MonthWithMostIncidents year="2014" /></section>
-        <section><MonthWithMostIncidents year="2015" /></section>
-        <section><MonthWithMostIncidents year="2016" /></section>
-        <section><MonthWithMostIncidents year="2017" /></section>
-        <section><MonthWithMostIncidents year="2018" /></section>
-        <section><MonthWithMostIncidents year="2019" /></section>     
+        <section><p>2010</p></section>
+           
     </div>
 </Scroller>
     <hr>
