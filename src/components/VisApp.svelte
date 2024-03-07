@@ -82,6 +82,7 @@
     margin: 0 auto;
     position: relative;
     
+    
   }
 
   button {
@@ -90,14 +91,17 @@
 
   img, svg {
     position: absolute;
-    top: 40px;
+    top: 80px;
     left: 0;
   }
 
   .slider {
     width: 100%;
   }
+
+  main {margin: 100px;}
 </style>
+<main>
 
 <div>
   <input class="slider" type="range" min="2010" max="2019" step="1" bind:value={currentYear} on:input={updateYear} />
@@ -105,3 +109,5 @@
   <img src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/-118.25,34.05,9,0,0/800x800?access_token=pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw" alt="Map">
   <svg width="800" height="800"></svg>
 </div>
+
+</main >
