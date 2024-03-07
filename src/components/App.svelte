@@ -26,6 +26,7 @@
     </div>
     <div slot="foreground">
         <section><p>2010</p></section>
+        <section><p>2011</p></section>
            
     </div>
 </Scroller>
