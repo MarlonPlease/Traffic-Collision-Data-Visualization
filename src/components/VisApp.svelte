@@ -86,7 +86,7 @@
   }
 
   button {
-    margin-bottom: 10px;
+    margin: 10px;
   }
 
   img, svg {
@@ -96,16 +96,26 @@
   }
 
   .slider {
-    width: 100%;
+    width: 800px;
   }
 
-  main {margin: 100px;}
+  main {margin: 10px;}
+
+  h2 {
+    text-align: left;
+    font-family: "Kode Mono", monospace;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1;
+    color: black;
+    padding: 10px;
+  }
 </style>
 <main>
-
-<div>
-  <input class="slider" type="range" min="2010" max="2019" step="1" bind:value={currentYear} on:input={updateYear} />
+<h2>Demographic Data of Traffic Collision Incidents during the 2010's</h2>
+<input class="slider" type="range" min="2010" max="2019" step="1" bind:value={currentYear} on:input={updateYear} />
   <span>{currentYear}</span>
+<div>
   <img src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/-118.25,34.05,9,0,0/800x800?access_token=pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw" alt="Map">
   <svg width="800" height="800"></svg>
 </div>
