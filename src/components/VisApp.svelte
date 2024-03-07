@@ -58,7 +58,8 @@
        .attr('cx', d => projection([parseFloat(d['Longitude']), parseFloat(d['Latitude'])])[0])
        .attr('cy', d => projection([parseFloat(d['Longitude']), parseFloat(d['Latitude'])])[1])
        .attr('r', 5)
-       .style('fill', 'red');
+       .style('fill', 'red')
+       .style('fill-opacity', 0.35);
   }
 
   function updateYear(event) {
@@ -112,12 +113,14 @@
   }
 </style>
 <main>
-<h2>Demographic Data of Traffic Collision Incidents during the 2010's</h2>
+<h2>Traffic Collision Incidents by Year</h2>
 <input class="slider" type="range" min="2010" max="2019" step="1" bind:value={currentYear} on:input={updateYear} />
   <span>{currentYear}</span>
+
 <div>
   <img src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/-118.25,34.05,9,0,0/800x800?access_token=pk.eyJ1IjoibWdhcmF5IiwiYSI6ImNsc2ZpZXZ4aTFsdzAycXBkOWpqenZyeDIifQ._PjOouLcBA5ow4qkKjQaQw" alt="Map">
   <svg width="800" height="800"></svg>
 </div>
+
 
 </main >
