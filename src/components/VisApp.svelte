@@ -114,6 +114,10 @@
 </style>
 <main>
 <h2>Traffic Collision Incidents by Year</h2>
+<p>
+    Here are the boundaries of what falls under the jurisdiction of LA City. 
+    We can see that scrolling by year that the map doesn't evolve much.
+    </p>
 <input class="slider" type="range" min="2010" max="2019" step="1" bind:value={currentYear} on:input={updateYear} />
   <span>{currentYear}</span>
 
