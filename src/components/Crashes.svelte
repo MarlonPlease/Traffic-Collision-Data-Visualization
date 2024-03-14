@@ -5,32 +5,26 @@
   let incidentsData = [];
 
   onMount(async () => {
-    // Load data
-    const data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Clone/main/static/sobriety_data.csv');
-    
-    // Parse dates
-    const parseDate = d3.timeParse("%Y-%m-%d");
+  // Load data
+  const data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Clone/main/static/sobriety_data.csv');
+  
+  // Parse dates
+  const parseDate = d3.timeParse("%Y-%m-%d");
 
-    // Filter data for the year 2019
-    const filteredData = data.filter(d => {
-      const date = parseDate(d['Date Occurred']);
-      return date.getFullYear() === 2019;
-
-      
-    });
-
-    // Aggregate data by counting incidents for each day
-    const aggregatedData = d3.rollup(filteredData, v => v.length, d => {
-      const date = parseDate(d['Date Occurred']);
-      return d3.timeDay(date);
-    });
-
-    // Convert aggregated data to array of objects
-    incidentsData = Array.from(aggregatedData, ([date, count]) => ({ date, count })).sort((a, b) => a.date - b.date);;
-
-    // Create the line chart
-    createLineChart(incidentsData);
+  // Aggregate data by counting incidents for each month, ignoring the year
+  const aggregatedData = d3.rollup(data, v => v.length, d => {
+    const date = parseDate(d['Date Occurred']);
+    return new Date(2000, date.getMonth(), date.getDate()); // Use a fixed year
   });
+
+  // Convert aggregated data to array of objects
+  incidentsData = Array.from(aggregatedData, ([date, count]) => ({ date, count })).sort((a, b) => a.date - b.date);
+
+  // Create the line chart
+  createLineChart(incidentsData);
+});
+
+
 
   function createLineChart(data) {
     // Set up dimensions for the chart
