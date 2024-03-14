@@ -98,10 +98,21 @@ const x = d3.scaleTime()
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   return monthNames[monthIndex];
 }
+function getMonthInfo(monthIndex) {
+  const monthInfo = [
+    "January: Information about January...",
+    "February: Information about February...",
+    // ... other months ...
+  ];
+  return monthInfo[monthIndex];
+}
 
   function updateMonth(event) {
   selectedMonth = +event.target.value; // Convert string to number
   updateDataAndChart();
+  // Update the month information
+  const monthInfo = getMonthInfo(selectedMonth);
+  document.getElementById('monthInfo').textContent = monthInfo;
 }
 </script>
 
@@ -143,3 +154,5 @@ const x = d3.scaleTime()
 
 
 <div id="chart"></div>
+<p id="monthInfo"></p>
+
