@@ -125,6 +125,8 @@ function getMonthInfo(monthIndex) {
   // Update the month information
   const monthInfo = getMonthInfo(selectedMonth);
   document.getElementById('monthInfo').textContent = monthInfo;
+  // Update the month name in the span element
+  document.getElementById('monthName').textContent = getMonthName(selectedMonth);
 }
 </script>
 
@@ -144,22 +146,10 @@ function getMonthInfo(monthIndex) {
     font-size: 12px;
   }
 </style>
+<main>
+<input type="range" min="0" max="11" bind:value={selectedMonth} on:input={updateMonth} />
+<span id="monthName">{getMonthName(selectedMonth)}</span>
 
-<select bind:value={selectedMonth} on:change={updateMonth}>
-  <option value="0">January</option>
-  <option value="1">February</option>
-  <option value="2">March</option>
-  <option value="3">April</option>
-  <option value="4">May</option>
-  <option value="5">June</option>
-  <option value="6">July</option>
-  <option value="7">August</option>
-  <option value="8">September</option>
-  <option value="9">October</option>
-  <option value="10">November</option>
-  <option value="11">December</option>
-  <!-- ... other months ... -->
-</select>
 
 
 
@@ -167,4 +157,4 @@ function getMonthInfo(monthIndex) {
 
 <div id="chart"></div>
 <p id="monthInfo"></p>
-
+</main>
