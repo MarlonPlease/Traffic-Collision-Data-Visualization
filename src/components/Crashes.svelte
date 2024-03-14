@@ -14,6 +14,8 @@ async function loadData() {
 onMount(async () => {
   await loadData();
   updateDataAndChart();
+  // Manually update the month information when the page loads
+  updateMonth({ target: { value: selectedMonth.toString() } });
 });
 
 function updateDataAndChart() {
