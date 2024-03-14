@@ -103,7 +103,17 @@ const x = d3.scaleTime()
 function getMonthInfo(monthIndex) {
   const monthInfo = [
     "January: New Years Day had the most crashes in the month of January.",
-    "February: President's Day falls on the 3rd monday of February.",
+    "February: President's Day falls on the 3rd Monday of February.",
+    "March: St. Patrick's Day falls on the 17th of March.",
+    "April: ",
+    "May: ",
+    "June: ",
+    "July: ",
+    "August: ",
+    "September: ",
+    "October: ",
+    "November: ",
+    "December: ",
     // ... other months ...
   ];
   return monthInfo[monthIndex];

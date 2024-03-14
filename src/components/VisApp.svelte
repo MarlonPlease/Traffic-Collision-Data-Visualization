@@ -115,8 +115,10 @@
 <main>
 <h2>Traffic Collision Incidents by Year</h2>
 <p>
-    Here are the boundaries of what falls under the jurisdiction of LA City. 
-    We can see that scrolling by year that the map doesn't evolve much.
+    Here are the boundaries delineating the jurisdiction of LA City.
+    It's evident from scrolling through the years that the majority of collision incident plot points remain within these jurisdictional boundaries.
+    It's apparent that the clusters of coordinates predominantly occur around highways and boulevards, 
+    indicating hotspots of activity.
     </p>
 <input class="slider" type="range" min="2010" max="2019" step="1" bind:value={currentYear} on:input={updateYear} />
   <span>{currentYear}</span>
