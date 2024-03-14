@@ -1,36 +1,45 @@
 <script>
-  import { onMount } from 'svelte';
-  import * as d3 from 'd3';
+import { onMount } from 'svelte';
+import * as d3 from 'd3';
 
-  let incidentsData = [];
+let selectedMonth = 0; // January
+let incidentsData = [];
+let allData = [];
 
-  onMount(async () => {
-    // Load data
-    const data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Clone/main/static/sobriety_data.csv');
-    
-    // Parse dates
-    const parseDate = d3.timeParse("%Y-%m-%d");
+async function loadData() {
+  // Load data
+  allData = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Clone/main/static/sobriety_data.csv');
+}
 
-    // Filter data for January
-    const januaryData = data.filter(d => {
-      const date = parseDate(d['Date Occurred']);
-      return date.getMonth() === 0; // January is represented by month 0
-    });
+onMount(async () => {
+  await loadData();
+  updateDataAndChart();
+});
 
-    // Aggregate data by counting incidents for each day in January
-    const aggregatedData = d3.rollup(januaryData, v => v.length, d => {
-      const date = parseDate(d['Date Occurred']);
-      return new Date(2000, date.getMonth(), date.getDate()); // Use a fixed year
-    });
+function updateDataAndChart() {
+  // Parse dates
+  const parseDate = d3.timeParse("%Y-%m-%d");
 
-    // Convert aggregated data to array of objects
-    incidentsData = Array.from(aggregatedData, ([date, count]) => ({ date, count })).sort((a, b) => a.date - b.date);
-
-    // Create the line chart
-    createLineChart(incidentsData);
+  // Filter data for the selected month
+  const filteredData = allData.filter(d => {
+    const date = parseDate(d['Date Occurred']);
+    return date.getMonth() === selectedMonth;
   });
 
+  // Aggregate data by counting incidents for each day in the selected month
+  const aggregatedData = d3.rollup(filteredData, v => v.length, d => {
+    const date = parseDate(d['Date Occurred']);
+    return new Date(2000, date.getMonth(), date.getDate()); // Use a fixed year
+  });
+
+  // Convert aggregated data to array of objects
+  incidentsData = Array.from(aggregatedData, ([date, count]) => ({ date, count })).sort((a, b) => a.date - b.date);
+
+  // Create the line chart
+  createLineChart(incidentsData);
+}
   function createLineChart(data) {
+    d3.select("#chart").html("");
     // Set up dimensions for the chart
     const margin = { top: 20, right: 30, bottom: 50, left: 40 }; // Increased bottom margin to accommodate the label
     const width = 800 - margin.left - margin.right;
@@ -84,6 +93,11 @@
       .attr("text-anchor", "middle")
       .text("January");
   }
+
+  function updateMonth(event) {
+  selectedMonth = +event.target.value; // Convert string to number
+  updateDataAndChart();
+}
 </script>
 
 <style>
@@ -102,5 +116,15 @@
     font-size: 12px;
   }
 </style>
+
+<select bind:value={selectedMonth} on:change={updateMonth}>
+  <option value="0">January</option>
+  <option value="1">February</option>
+  <!-- ... other months ... -->
+</select>
+
+
+
+
 
 <div id="chart"></div>
