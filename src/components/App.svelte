@@ -3,7 +3,7 @@
     import VisApp from '../components/VisApp.svelte';
     import Ethnicity from '../components/Ethnicity.svelte';
     import Basic_Information from '../components/Basic Information.svelte';
-    import MonthWithMostIncidents from './MonthWithMostIncidents.svelte';
+    import Crashes from '../components/Crashes.svelte';
 
     let plotPoint = { longitude: -118.25, latitude: 34.05 };
 
@@ -19,6 +19,10 @@
     <Ethnicity />
     <hr>
     <VisApp />
+    <hr>
+    <hr>
+    <hr>
+    <Crashes />
     <hr>
 <Scroller top="{0.2}" bottom="{0.8}" bind:index bind:offset bind:progress>
     <div slot="background">
