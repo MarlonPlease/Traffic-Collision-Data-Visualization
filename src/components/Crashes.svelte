@@ -145,16 +145,36 @@ function getMonthInfo(monthIndex) {
   .axis text {
     font-size: 12px;
   }
+
+  h2 {
+    text-align: left;
+    font-family: "Kode Mono", monospace;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1;
+    color: black;
+    padding: 10px;
+  }
 </style>
 <main>
-<input type="range" min="0" max="11" bind:value={selectedMonth} on:input={updateMonth} />
-<span id="monthName">{getMonthName(selectedMonth)}</span>
+<h2>Traffic Incidents Involving Sobriety</h2>
+<p>
+    The dataset includes MO Codes (modus operandi),
+    which are shorthand descriptions for what happened in a crime incident. 
+    MO Code 3801 specifically denotes Sobriety incidents. Our dataset already filtered for MO Codes that involved Traffic Collisions.
+    It's important to note that while in the real world people may report an incident for sobriety reasons, 
+    in this project we focus specifically on Traffic Collision incidents.
+    </p>
+  <div style="display: flex; justify-content: center; width: 100%;">
+    <div style="width: 400px">
+      <input type="range" min="0" max="11" bind:value={selectedMonth} on:input={updateMonth} style="width: 100%"/>
+      <span id="monthName">{getMonthName(selectedMonth)}</span>
+    </div>
+  </div>
 
-
-
-
-
-
-<div id="chart"></div>
-<p id="monthInfo"></p>
+  <div id="chart"></div>
+  <p id="monthInfo"></p>
 </main>
+
+
+
