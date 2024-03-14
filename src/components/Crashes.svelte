@@ -88,11 +88,16 @@ function updateDataAndChart() {
 
     // Append month label
     svg.append("text")
-      .attr("x", width / 2)
-      .attr("y", height + margin.bottom - 10) // Position the label below the x-axis
-      .attr("text-anchor", "middle")
-      .text("January");
+    .attr("x", width / 2)
+    .attr("y", height + margin.bottom - 10) // Position the label below the x-axis
+    .attr("text-anchor", "middle")
+    .text(getMonthName(selectedMonth));
   }
+
+  function getMonthName(monthIndex) {
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  return monthNames[monthIndex];
+}
 
   function updateMonth(event) {
   selectedMonth = +event.target.value; // Convert string to number
