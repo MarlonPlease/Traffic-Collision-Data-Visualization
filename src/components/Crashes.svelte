@@ -53,10 +53,10 @@ function updateDataAndChart() {
       .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    // X scale (days of January)
-    const x = d3.scaleTime()
-      .domain(d3.extent(data, d => d.date))
-      .range([0, width]);
+    // X scale (days of the month)
+const x = d3.scaleTime()
+  .domain([new Date(2000, selectedMonth, 1), new Date(2000, selectedMonth + 1, 0)]) // Fixed domain from the 1st to the last day of the selected month
+  .range([0, width]);
 
     // Y scale (count of incidents)
     const y = d3.scaleLinear()

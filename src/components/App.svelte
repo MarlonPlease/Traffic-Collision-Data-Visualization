@@ -19,8 +19,10 @@
     <Ethnicity />
     <hr>
     <VisApp />
-    <hr>
-    <hr>
+    <hr style=" width: 50%; margin: 0; border: none; height: 5px; background: linear-gradient(to right, white, white);">
+    <br>
+    <hr style="  background: linear-gradient(to right, white, white);">
+    <hr style="  background: linear-gradient(to right, white, white);">
     <hr>
     <Crashes />
     <hr>
