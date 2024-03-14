@@ -99,13 +99,17 @@
   <p>
     Why the funny shape? 
     The coordinates form a shape that resemble the map of the jurisdiction of LAPD.
-
+</p>
+<p>
     Why are other cities not reported? 
     The LAPD does not police all the cities of LA County.
-
+</p>
+<p>
     Will the ethnic demographics of traffic collisions change for the 2020's decade? 
     Who knows.
-    
+    </p>
+<p>
+    Below are coordinates from the dataset involving Traffic Collision Incidents categorized by reported ethnicity.
     </p>
   <div id="checkbox-container" class="checkbox-grid">
     <!-- Add checkboxes for each ethnicity -->
@@ -135,6 +139,14 @@
     color: black;
     padding: 10px;
   }
+  p {
+        text-align: left;
+    font-family: "Kode Mono", monospace;
+    font-weight: 400;
+    font-size: 32 px;
+    line-height: 2;
+    color: black;
+    }
   .checkbox-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust based on your preference */

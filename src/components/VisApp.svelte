@@ -101,6 +101,14 @@
   }
 
   main {margin: 10px;}
+  p {
+        text-align: left;
+    font-family: "Kode Mono", monospace;
+    font-weight: 400;
+    font-size: 32 px;
+    line-height: 2;
+    color: black;
+    }
 
   h2 {
     text-align: left;
@@ -115,6 +123,10 @@
 <main>
 <h2>Traffic Collision Incidents by Year</h2>
 <p>
+There previous section left us wondering why the coordinates formed a specific shape...
+</p>
+<p>
+    
     Here are the boundaries delineating the jurisdiction of LA City.
     It's evident from scrolling through the years that the majority of collision incident plot points remain within these jurisdictional boundaries.
     It's apparent that the clusters of coordinates predominantly occur around highways and boulevards, 

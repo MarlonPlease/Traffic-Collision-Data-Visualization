@@ -102,7 +102,7 @@ const x = d3.scaleTime()
 }
 function getMonthInfo(monthIndex) {
   const monthInfo = [
-    "January: New Years Day had the most crashes in the month of January. January 1st has The is the most incidents for sobriety reasons in the dataset.",
+    "January: New Years Day had the most incident in the month of January. January 1st has The is the most incidents for sobriety reasons overall in the dataset.",
     "February: President's Day falls on the 3rd Monday of February which might be the reason for the small peak near the 20th of the month.",
     "March: St. Patrick's Day falls on the 17th of March. Many higher education institutions have a spring break during the month in the Los Angeles area.",
     "April: Many higher education institutions have a spring break during the month in the Los Angeles area.",
@@ -141,6 +141,14 @@ function getMonthInfo(monthIndex) {
     stroke: #000;
     shape-rendering: crispEdges;
   }
+    p {
+        text-align: left;
+    font-family: "Kode Mono", monospace;
+    font-weight: 400;
+    font-size: 32 px;
+    line-height: 2;
+    color: black;
+    }
 
   .axis text {
     font-size: 12px;
@@ -157,14 +165,18 @@ function getMonthInfo(monthIndex) {
   }
 </style>
 <main>
-<h2>Traffic Incidents Involving Sobriety</h2>
+<h2>Traffic Incidents Involving Sobriety by Month</h2>
 <p>
     The dataset includes MO Codes (modus operandi),
     which are shorthand descriptions for what happened in a crime incident. 
-    MO Code 3801 specifically denotes Sobriety incidents. Our dataset already filtered for MO Codes that involved Traffic Collisions.
-    It's important to note that while in the real world people may report an incident for sobriety reasons, 
-    in this project we focus specifically on Traffic Collision incidents.
-    </p>
+    MO Code 3801 specifically denotes "Sobriety" incidents.
+    The data is unclear about what constitutes "sobriety," including whether it refers to being under the influence of alcohol, or if includes being under the influence of drug use.
+
+</p>
+<p>
+All the incidents from 2010 to 2019 were subsequently sorted by month.
+</p>
+
   <div style="display: flex; justify-content: center; width: 100%;">
     <div style="width: 400px">
       <input type="range" min="0" max="11" bind:value={selectedMonth} on:input={updateMonth} style="width: 100%"/>
