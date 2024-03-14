@@ -102,18 +102,18 @@ const x = d3.scaleTime()
 }
 function getMonthInfo(monthIndex) {
   const monthInfo = [
-    "January: New Years Day had the most crashes in the month of January.",
-    "February: President's Day falls on the 3rd Monday of February.",
-    "March: St. Patrick's Day falls on the 17th of March.",
-    "April: ",
-    "May: ",
-    "June: ",
-    "July: ",
-    "August: ",
-    "September: ",
-    "October: ",
-    "November: ",
-    "December: ",
+    "January: New Years Day had the most crashes in the month of January. January 1st has The is the most incidents for sobriety reasons in the dataset.",
+    "February: President's Day falls on the 3rd Monday of February which might be the reason for the small peak near the 20th of the month.",
+    "March: St. Patrick's Day falls on the 17th of March. Many higher education institutions have a spring break during the month in the Los Angeles area.",
+    "April: Many higher education institutions have a spring break during the month in the Los Angeles area.",
+    "May: There appears to be a slight peak around the 5th of May and near Memorial Day, which falls on the last Monday of May. Mother's Day is the on the second Sunday in May, which may explain the peak near the 13th of the month.",
+    "June: Father's Day ways on the second Sunday of June, which might explain the peak near the 16th of the month. It remains unclear why there was a peak near the 26th.",
+    "July: It remains unclear why there was a small peak near the 21st. It cannot be attributed to Indepence Day, which falls on the 4th of every July.",
+    "August: It remains unclear why there was a small peak near the 6th, 14th, and 19th.",
+    "September: It remains unclear why there was a small peak near the 9th.",
+    "October: It remains unclear why there was a small peak near the 4th and 7th. It cannot be attributed to Halloween, which falls near the end of the month on the last day of October.",
+    "November: Veterans Day falls on the 11th of the month. It remains unclear why there was a small peak near the 16th; It cannot be attributed to Thanksgiving, which falls near the end of the month on the last Thursday of November. However, we can observe peaks around Thanksgiving.",
+    "December: There is a peak near Christmas, which falls near the 25th.",
     // ... other months ...
   ];
   return monthInfo[monthIndex];
