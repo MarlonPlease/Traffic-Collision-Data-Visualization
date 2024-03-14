@@ -131,7 +131,10 @@ There previous section left us wondering why the coordinates formed a specific s
     It's evident from scrolling through the years that the majority of collision incident plot points remain within these jurisdictional boundaries.
     It's apparent that the clusters of coordinates predominantly occur around highways and boulevards, 
     indicating hotspots of activity.
+    <a href="https://geohub.lacity.org/datasets/lahub::city-boundary/about">The boundary is according to the LACity.org datasets website.</a>
     </p>
+    
+
 <input class="slider" type="range" min="2010" max="2019" step="1" bind:value={currentYear} on:input={updateYear} />
   <span>{currentYear}</span>
 

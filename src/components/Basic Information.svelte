@@ -212,7 +212,8 @@ svg.selectAll(".bar")
     </p>
     <p>There were a total of <span style="background-color:  #66FFCC ;">{datasetSize}</span> Traffic Collision Incidents between the years 2010 and 2019. 
     The average reported age during this time period was <span style="background-color:  #66FFCC ;">{averageAge.toFixed(2)}</span> years old.
-
+    <a href="https://geohub.lacity.org/datasets/lahub::city-boundary/about">The incidents are according to the LACity.org datasets website.</a>
+    There is information on reported coordinates, gender, ethnicity, date of occurrence, date of reports, and other details, totaling 18 columns; the dataset was last updated on March 12, 2024.
     </p>
   {/if}
   <!-- Container for the bar graph -->
