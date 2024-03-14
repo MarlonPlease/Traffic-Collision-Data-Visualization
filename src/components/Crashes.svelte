@@ -5,30 +5,34 @@
   let incidentsData = [];
 
   onMount(async () => {
-  // Load data
-  const data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Clone/main/static/sobriety_data.csv');
-  
-  // Parse dates
-  const parseDate = d3.timeParse("%Y-%m-%d");
+    // Load data
+    const data = await d3.csv('https://raw.githubusercontent.com/MarlonPlease/Project-4-Clone/main/static/sobriety_data.csv');
+    
+    // Parse dates
+    const parseDate = d3.timeParse("%Y-%m-%d");
 
-  // Aggregate data by counting incidents for each month, ignoring the year
-  const aggregatedData = d3.rollup(data, v => v.length, d => {
-    const date = parseDate(d['Date Occurred']);
-    return new Date(2000, date.getMonth(), date.getDate()); // Use a fixed year
+    // Filter data for January
+    const januaryData = data.filter(d => {
+      const date = parseDate(d['Date Occurred']);
+      return date.getMonth() === 0; // January is represented by month 0
+    });
+
+    // Aggregate data by counting incidents for each day in January
+    const aggregatedData = d3.rollup(januaryData, v => v.length, d => {
+      const date = parseDate(d['Date Occurred']);
+      return new Date(2000, date.getMonth(), date.getDate()); // Use a fixed year
+    });
+
+    // Convert aggregated data to array of objects
+    incidentsData = Array.from(aggregatedData, ([date, count]) => ({ date, count })).sort((a, b) => a.date - b.date);
+
+    // Create the line chart
+    createLineChart(incidentsData);
   });
-
-  // Convert aggregated data to array of objects
-  incidentsData = Array.from(aggregatedData, ([date, count]) => ({ date, count })).sort((a, b) => a.date - b.date);
-
-  // Create the line chart
-  createLineChart(incidentsData);
-});
-
-
 
   function createLineChart(data) {
     // Set up dimensions for the chart
-    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+    const margin = { top: 20, right: 30, bottom: 50, left: 40 }; // Increased bottom margin to accommodate the label
     const width = 800 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
@@ -40,7 +44,7 @@
       .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    // X scale (days of the year)
+    // X scale (days of January)
     const x = d3.scaleTime()
       .domain(d3.extent(data, d => d.date))
       .range([0, width]);
@@ -72,6 +76,13 @@
     // Append y-axis
     svg.append("g")
       .call(d3.axisLeft(y));
+
+    // Append month label
+    svg.append("text")
+      .attr("x", width / 2)
+      .attr("y", height + margin.bottom - 10) // Position the label below the x-axis
+      .attr("text-anchor", "middle")
+      .text("January");
   }
 </script>
 
