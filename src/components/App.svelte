@@ -16,6 +16,10 @@
 <main>
     <Basic_Information />
     <hr>
+    <p>
+    ...but does ethnicity play a part/affect in collisions? Lets take a look...
+    </p>
+    <hr>
     <Ethnicity />
     <hr>
     <VisApp />
@@ -26,6 +30,12 @@
     <hr>
     <Crashes />
     <hr>
+    <h2>Takeaway</h2>
+
+    <p>
+    The frequency and locations of car collisions are crucial in LA, the largest US metro area, highlighting the need for awareness. 
+    As LA prepares for the 2028 Olympics, understanding collision hotspots aids in planning metro stations. 
+    Our visualization effectively illustrates car crash trends in LA throughout the 2010s. </p>
     <hr>
 </main>
 
